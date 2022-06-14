@@ -1,0 +1,32 @@
+<resources>
+
+  <!-- Base application Theme -->
+  <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <!-- Splash Screen Theme -->
+  <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_background</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+  </style>
+
+  <style name="Title">
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display2</item>
+    <item name="android:textColor">?android:textColorPrimary</item>
+  </style>
+
+  <style name="Subtitle">
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+  </style>
+
+  <style name="Body">
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body2</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+</resources>

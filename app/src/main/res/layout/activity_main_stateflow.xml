@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?><!--TODO: Set up data binding to bind the UI to data sources in the app -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.raywenderlich.android.databindingobservables.model.Session" />
+
+        <variable
+            name="viewmodel"
+            type="com.raywenderlich.android.databindingobservables.stateflow.MainViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="32dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/registerTitleTextView"
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/page_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/registerSubtitleTextView"
+                style="@style/Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/page_subtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerTitleTextView" />
+
+            <TextView
+                android:id="@+id/personalInformationTitleTextView"
+                style="@style/Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/personal_info_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerSubtitleTextView" />
+
+            <EditText
+                android:id="@+id/firstNameEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name_hint"
+                android:inputType="textPersonName"
+                android:nextFocusDown="@+id/lastNameEditText"
+                android:text="@={viewmodel.firstName}"
+                app:layout_constraintEnd_toStartOf="@+id/lastNameEditText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalInformationTitleTextView"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name_hint"
+                android:inputType="textPersonName"
+                android:nextFocusDown="@+id/emailEditText"
+                android:text="@={viewmodel.lastName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/firstNameEditText"
+                app:layout_constraintTop_toBottomOf="@+id/personalInformationTitleTextView"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/phoneNumberAreaCodeEditText"
+                android:text="@={viewmodel.email}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstNameEditText"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/phoneNumberAreaCodeEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number_area_code_hint"
+                android:inputType="phone"
+                android:maxLength="3"
+                android:nextFocusDown="@+id/phoneNumberEditText"
+                android:text="@={viewmodel.phoneNumber.areaCode}"
+                app:layout_constraintEnd_toStartOf="@+id/phoneNumberEditText"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/phoneNumberEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:maxLength="8"
+                android:text="@={viewmodel.phoneNumber.number}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintStart_toEndOf="@+id/phoneNumberAreaCodeEditText"
+                app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/usernameTextView"
+                style="@style/Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{@string/username_format(viewmodel.userName)}"
+                android:visibility="@{viewmodel.showUserName ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberAreaCodeEditText"
+                tools:text="Your username is: firstname_lastname" />
+
+            <TextView
+                android:id="@+id/classesTitleTextView"
+                style="@style/Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/sessions_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usernameTextView" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/sessionsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:chipSpacingHorizontal="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/classesTitleTextView">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/morningSessionChip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.sessions[Session.MORNING]}"
+                    android:text="@string/morning_label" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/afternoonSessionChip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.sessions[Session.NOON]}"
+                    android:text="@string/noon_label" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/eveningSessionChip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.sessions[Session.EVENING]}"
+                    android:text="@string/evening_label" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/nightSessionChip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.sessions[Session.NIGHT]}"
+                    android:text="@string/night_label" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:enabled="@{viewmodel.enableRegistration}"
+                android:onClick="@{(v)->viewmodel.onRegisterClicked()}"
+                android:text="@string/register_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sessionsGroup" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

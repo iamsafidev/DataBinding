@@ -1,0 +1,2 @@
+rootProject.name='RwAndroidDataBindingObservablesTutorial'
+include ':app'

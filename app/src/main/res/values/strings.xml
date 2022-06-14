@@ -1,0 +1,30 @@
+<resources>
+  <string name="app_name">SweatBar</string>
+  <string name="screen_label_livedata">SweatBar - LiveData</string>
+  <string name="screen_label_stateflow">SweatBar - StateFlow</string>
+
+  <string name="page_title">Welcome!</string>
+  <string name="page_subtitle">You\'re one step away from joining SweatBar.</string>
+
+  <string name="personal_info_title">Enter your personal information.</string>
+  <string name="first_name_hint">First name*</string>
+  <string name="last_name_hint">Last name*</string>
+  <string name="email_hint">Email address*</string>
+  <string name="phone_number_area_code_hint">000</string>
+  <string name="phone_number_hint">000–0000</string>
+
+  <string name="username_format">Your username is: %s</string>
+
+  <string name="sessions_title">Select the classes you\'d like to enroll in now, or complete this step later.</string>
+
+  <string name="register_label">Register</string>
+
+  <string name="morning_label">Morning</string>
+  <string name="noon_label">Noon</string>
+  <string name="evening_label">Evening</string>
+  <string name="night_label">Night</string>
+
+  <string name="registration_success_title">You\'re all set!</string>
+  <string name="registration_success_subtitle">It\'s time to sweat! We look forward to seeing you soon!</string>
+
+</resources>
